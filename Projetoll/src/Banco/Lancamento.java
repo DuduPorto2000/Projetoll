@@ -7,6 +7,9 @@ public class Lancamento {
 	private double valor;
 	private String numero;
 	
+	public Lancamento () {
+		this.setDatahora(LocalDateTime.now());
+	}
 
 	public LocalDateTime getDatahora() {
 		return datahora;

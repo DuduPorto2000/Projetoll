@@ -1,6 +1,7 @@
 package Repositorio;
 
 import java.util.ArrayList;
+
 import java.util.TreeMap;
 
 import Banco.Conta;
@@ -26,9 +27,29 @@ public class Repositorio {
 	
 	
 	
+	
 	public TreeMap<String, Correntista> getCorrentistas() {
 		return correntistas;
 	}
+	
+	public void addCorrentistas(Correntista correntista) {
+		this.correntistas.put(correntista.getCpf(), correntista);
+	}
+	
+	public void delCorrentista(Correntista correntista) {
+		this.correntistas.remove(correntista.getCpf());
+	}
+	
+	public void addContas(Conta conta) {
+		this.contas.put(conta.getNumero(), conta);
+	}
+	
+	public void delContas(Conta conta) {
+		this.contas.remove(conta.getNumero());
+	}
+	
+	
+	
 	
 	public void setCorrentistas(TreeMap<String, Correntista> correntistas) {
 		this.correntistas = correntistas;

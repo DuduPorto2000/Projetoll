@@ -7,9 +7,24 @@ public class Conta {
 	private double saldo;
 	private String chavePiks;
 	private String tipochavePiks;
-	private ArrayList<Lancamento> lancamentos = new ArrayList<>();
+	private ArrayList<Lancamento> lancamentos;
 	private Correntista correntista;
+
+	public Conta (String numero, Correntista correntista) {
+		setNumero(numero);
+		setSaldo(0);
+		setLancamentos(new ArrayList<>());
+		setCorrentista(correntista);
+	}
 	
+	public Conta (String numero, double saldo, String chavePiks, String tipochavePiks, ArrayList<Lancamento> lancamentos, Correntista correntista) {
+		setNumero(numero);
+		setSaldo(saldo);
+		setChavePiks(chavePiks);
+		setTipochavePiks(tipochavePiks);
+		setLancamentos(lancamentos);
+		setCorrentista(correntista);
+	}
 		
 	public String getNumero() {
 		return numero;

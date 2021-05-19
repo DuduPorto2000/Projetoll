@@ -8,13 +8,11 @@ public class Correntista {
 	private Conta conta;
 	
 
-	public Correntista(String cpf, String nome, String telefone, String email, Conta conta) {
-		super();
-		this.cpf = cpf;
-		this.nome = nome;
-		this.telefone = telefone;
-		this.email = email;
-		this.conta = conta;
+	public Correntista(String cpf, String nome, String telefone, String email) {
+		this.setCpf(cpf);
+		this.setNome(nome);
+		this.setTelefone(telefone);
+		this.setEmail(email);
 	}
 	
 
