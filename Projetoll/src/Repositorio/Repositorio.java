@@ -16,13 +16,41 @@ public class Repositorio {
 	
 	
 	
+	public void addCorrentistas(Correntista correntista) {
+		this.correntistas.put(correntista.getCpf(), correntista);
+	}
+	public void delCorrentista(Correntista correntista) {
+		this.correntistas.remove(correntista.getCpf());
+	}
+	public Correntista localizarCorrentista(String Cpf) {
+		return correntistas.get(Cpf);
+	}
+	
+	
+	
+	
+	public void addContas(Conta conta) {
+		this.contas.put(conta.getChavePiks(), conta);
+	}
+	public void delContas(Conta conta) {
+		this.contas.remove(conta.getChavePiks());
+	}
+	public Conta localizarConta(String chavePiks) {
+		return contas.get(chavePiks);
+	}
 	
 	
 	
 	
 	
 	
+	public void addLancamentos(Lancamento lancamento) {
+		this.lancamentos.add(lancamento);
+	}
 	
+	public void delLancamentos(Lancamento lancamento) {
+		this.lancamentos.remove(lancamento);
+	}
 	
 	
 	
@@ -32,42 +60,28 @@ public class Repositorio {
 		return correntistas;
 	}
 	
-	public void addCorrentistas(Correntista correntista) {
-		this.correntistas.put(correntista.getCpf(), correntista);
-	}
-	
-	public void delCorrentista(Correntista correntista) {
-		this.correntistas.remove(correntista.getCpf());
-	}
-	
-	public void addContas(Conta conta) {
-		this.contas.put(conta.getNumero(), conta);
-	}
-	
-	public void delContas(Conta conta) {
-		this.contas.remove(conta.getNumero());
-	}
-	
-	
-	
-	
-	public void setCorrentistas(TreeMap<String, Correntista> correntistas) {
-		this.correntistas = correntistas;
-	}
-	
 	public TreeMap<String, Conta> getContas() {
 		return contas;
 	}
 	
-	public void setContas(TreeMap<String, Conta> contas) {
-		this.contas = contas;
-	}
 	
 	public ArrayList<Lancamento> getLancamentos() {
 		return lancamentos;
 	}
 	
-	public void setLancamentos(ArrayList<Lancamento> lancamentos) {
-		this.lancamentos = lancamentos;
+	
+	
+	
+	
+	public int getTotalContas(){
+		return contas.size();
+	}
+	
+	public int getTotalCorrentistas(){
+		return correntistas.size();
+	}
+	
+	public int getTotalLancamentos(){
+		return lancamentos.size();
 	}
 }

@@ -10,6 +10,10 @@ public class Conta {
 	private ArrayList<Lancamento> lancamentos;
 	private Correntista correntista;
 
+	
+	
+	
+	
 	public Conta (String numero, Correntista correntista) {
 		setNumero(numero);
 		setSaldo(0);
@@ -26,48 +30,60 @@ public class Conta {
 		setCorrentista(correntista);
 	}
 		
-	public String getNumero() {
-		return numero;
+	
+	public void creditar(String cpf, double valor) {
+		
 	}
 	
-	public void setNumero(String numero) {
-		this.numero = numero;
+
+	public String getNumero() {
+		return numero;
 	}
 
 	public double getSaldo() {
 		return saldo;
 	}
-
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
-
+	
 	public String getChavePiks() {
 		return chavePiks;
 	}
-
-	public void setChavePiks(String chavePiks) {
-		this.chavePiks = chavePiks;
-	}
-
+	
 	public String getTipochavePiks() {
 		return tipochavePiks;
 	}
+	
+	public ArrayList<Lancamento> getLancamentos() {
+		return lancamentos;
+	}
+	
+	public Correntista getCorrentista() {
+		return correntista;
+	}
 
+	
+	
+	
+	
+	
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+	
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+	
+	public void setChavePiks(String chavePiks) {
+		this.chavePiks = chavePiks;
+	}
+	
+	
 	public void setTipochavePiks(String tipochavePiks) {
 		this.tipochavePiks = tipochavePiks;
 	}
 
-	public ArrayList<Lancamento> getLancamentos() {
-		return lancamentos;
-	}
-
 	public void setLancamentos(ArrayList<Lancamento> lancamentos) {
 		this.lancamentos = lancamentos;
-	}
-
-	public Correntista getCorrentista() {
-		return correntista;
 	}
 
 	public void setCorrentista(Correntista correntista) {

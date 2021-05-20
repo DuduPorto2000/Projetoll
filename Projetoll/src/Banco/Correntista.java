@@ -8,48 +8,59 @@ public class Correntista {
 	private Conta conta;
 	
 
+	
+	
+	
+	
 	public Correntista(String cpf, String nome, String telefone, String email) {
-		this.setCpf(cpf);
-		this.setNome(nome);
-		this.setTelefone(telefone);
-		this.setEmail(email);
+		setCpf(cpf);
+		setNome(nome);
+		setTelefone(telefone);
+		setEmail(email);
 	}
+	
+
+	
+	
 	
 
 	public String getNome() {
 		return nome;
 	}
 	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
 	public String getCpf() {
 		return cpf;
+	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public Conta getConta() {
+		return conta;
+	}
+	
+	
+	
+	
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	public String getTelefone() {
-		return telefone;
-	}
-
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Conta getConta() {
-		return conta;
 	}
 
 	public void setConta(Conta conta) {

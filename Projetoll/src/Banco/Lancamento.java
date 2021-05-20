@@ -7,28 +7,42 @@ public class Lancamento {
 	private double valor;
 	private String numero;
 	
+	
+	
+	
+	
 	public Lancamento () {
-		this.setDatahora(LocalDateTime.now());
+		setDatahora(LocalDateTime.now());
+		setValor(valor);
+		setNumero(numero);
 	}
 
+	
+	
+	
+	
 	public LocalDateTime getDatahora() {
 		return datahora;
 	}
+	
+	public double getValor() {
+		return valor;
+	}
+	
+	public String getNumero() {
+		return numero;
+	}
+	
+	
+	
+	
 	
 	public void setDatahora(LocalDateTime datahora) {
 		this.datahora = datahora;
 	}
 
-	public double getValor() {
-		return valor;
-	}
-
 	public void setValor(double valor) {
 		this.valor = valor;
-	}
-
-	public String getNumero() {
-		return numero;
 	}
 
 	public void setNumero(String numero) {
