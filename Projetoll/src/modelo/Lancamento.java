@@ -1,4 +1,4 @@
-package Banco;
+package modelo;
 
 import java.time.LocalDateTime;
 
@@ -8,19 +8,18 @@ public class Lancamento {
 	private String numero;
 	
 	
-	
-	
-	
-	public Lancamento () {
+	public Lancamento (String numero, double valor) {
 		setDatahora(LocalDateTime.now());
 		setValor(valor);
 		setNumero(numero);
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Lancamento [datahora=" + datahora + ", valor=" + valor + ", numero=" + numero + "]";
+	}
 
-	
-	
-	
-	
 	public LocalDateTime getDatahora() {
 		return datahora;
 	}
@@ -32,9 +31,6 @@ public class Lancamento {
 	public String getNumero() {
 		return numero;
 	}
-	
-	
-	
 	
 	
 	public void setDatahora(LocalDateTime datahora) {

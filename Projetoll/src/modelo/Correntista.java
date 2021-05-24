@@ -1,4 +1,4 @@
-package Banco;
+package modelo;
 
 public class Correntista {
 	private String cpf;
@@ -6,10 +6,6 @@ public class Correntista {
 	private String telefone;
 	private String email;
 	private Conta conta;
-	
-
-	
-	
 	
 	
 	public Correntista(String cpf, String nome, String telefone, String email) {
@@ -20,9 +16,12 @@ public class Correntista {
 	}
 	
 
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Correntista [cpf=" + cpf + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", contaNumero="
+				+ conta.getNumero() + "]";
+	}
+
 
 	public String getNome() {
 		return nome;
@@ -43,8 +42,6 @@ public class Correntista {
 	public Conta getConta() {
 		return conta;
 	}
-	
-	
 	
 	
 	public void setNome(String nome) {

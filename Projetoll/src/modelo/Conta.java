@@ -1,18 +1,14 @@
-package Banco;
+package modelo;
 
 import java.util.ArrayList;
 
 public class Conta {
 	private String numero;
 	private double saldo;
-	private String chavePiks;
+	private String chavePIKS;
 	private String tipochavePiks;
 	private ArrayList<Lancamento> lancamentos;
 	private Correntista correntista;
-
-	
-	
-	
 	
 	public Conta (String numero, Correntista correntista) {
 		setNumero(numero);
@@ -21,21 +17,40 @@ public class Conta {
 		setCorrentista(correntista);
 	}
 	
-	public Conta (String numero, double saldo, String chavePiks, String tipochavePiks, ArrayList<Lancamento> lancamentos, Correntista correntista) {
+	public Conta (String numero, double saldo, String chavePIKS, String tipochavePiks, ArrayList<Lancamento> lancamentos, Correntista correntista) {
 		setNumero(numero);
 		setSaldo(saldo);
-		setChavePiks(chavePiks);
+		setChavePIKS(chavePIKS);
 		setTipochavePiks(tipochavePiks);
 		setLancamentos(lancamentos);
 		setCorrentista(correntista);
 	}
-		
 	
-	public void creditar(String cpf, double valor) {
-		
+	public void creditar(double valor) {
+		setSaldo( getSaldo() + valor );
 	}
 	
+	public void debitar(double valor) throws Exception {
+		if( getSaldo() >= valor )
+			setSaldo( getSaldo() - valor );
+		else
+			throw new Exception("Credito insuficiente");
+	}
+	
+	@Override
+	public String toString() {
+		return "Conta [numero=" + numero + ", saldo=" + saldo + ", chavePIKS=" + chavePIKS + ", tipochavePiks="
+				+ tipochavePiks + ", correntistaCPF=" + correntista.getCpf() + "]";
+	}
 
+	public Lancamento criarLancamento(double valor) {
+		Lancamento lancamento = new Lancamento(getNumero(), valor);
+		getLancamentos().add(lancamento);
+		
+		return lancamento;
+	}
+	
+	
 	public String getNumero() {
 		return numero;
 	}
@@ -44,8 +59,8 @@ public class Conta {
 		return saldo;
 	}
 	
-	public String getChavePiks() {
-		return chavePiks;
+	public String getChavePIKS() {
+		return chavePIKS;
 	}
 	
 	public String getTipochavePiks() {
@@ -59,10 +74,6 @@ public class Conta {
 	public Correntista getCorrentista() {
 		return correntista;
 	}
-
-	
-	
-	
 	
 	
 	public void setNumero(String numero) {
@@ -73,10 +84,9 @@ public class Conta {
 		this.saldo = saldo;
 	}
 	
-	public void setChavePiks(String chavePiks) {
-		this.chavePiks = chavePiks;
+	public void setChavePIKS(String chavePiks) {
+		this.chavePIKS = chavePiks;
 	}
-	
 	
 	public void setTipochavePiks(String tipochavePiks) {
 		this.tipochavePiks = tipochavePiks;
