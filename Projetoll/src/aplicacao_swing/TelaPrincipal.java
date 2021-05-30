@@ -27,6 +27,7 @@ import fachada.Fachada;
 import modelo.Conta;
 import modelo.ContaEspecial;
 import modelo.Correntista;
+import modelo.Lancamento;
 
 public class TelaPrincipal {
 	private JFrame frame;
@@ -40,7 +41,7 @@ public class TelaPrincipal {
 	private JMenuItem mntmListarContas;
 	private JMenuItem mntmListarCorrentistas;
 	private JMenuItem mntmListarlancamentos;
-	private JMenu mnConsulta;
+	private JMenuItem mntmListarcontatop;
 
 	/**
 	 * Launch the application.
@@ -157,7 +158,8 @@ public class TelaPrincipal {
 		mntmTransferir = new JMenuItem("Transferir");
 		mntmTransferir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				TelaTransferir j = new TelaTransferir();
+				j.setVisible(true);
 			}
 		});
 		mnConta.add(mntmTransferir);
@@ -207,21 +209,41 @@ public class TelaPrincipal {
 		mntmListarlancamentos = new JMenuItem("Lancamentos");
 		mntmListarlancamentos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String texto;
+				ArrayList<Lancamento> lista = Fachada.listarLancamentos();
+				texto = "Listagem de Lançamentos: \n";
+				if (lista.isEmpty())
+					texto += "não existe lançamentos\n";
+				else 	
+					for(Lancamento c: lista) 
+						texto +=  c + "\n"; 
+
+				//A mesma tela de listagem é usada para várias listagens
+				TelaListagem j = new TelaListagem(texto);
+				j.setVisible(true);
 			}
 		});
 		mnListagem.add(mntmListarlancamentos);
 		
-		//-------------MENU-----------------------------------
-		mnConsulta = new JMenu("conta Top");
-		menuBar.add(mnConsulta);
-		mnConsulta.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				//				TelaConsulta j = new TelaConsulta();
-				//				j.setVisible(true);
+		mntmListarcontatop = new JMenuItem("Conta Top");
+		mntmListarcontatop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String texto;
+				Conta conta = Fachada.obterContaTop();
+				texto = "Conta Top: \n";
+				if (conta == null)
+					texto += "Não existe conta top\n";
+				else 	
+					texto +=  conta + "\n"; 
+
+				//A mesma tela de listagem é usada para várias listagens
+				TelaListagem j = new TelaListagem(texto);
+				j.setVisible(true);
 			}
 		});
-
+		mnListagem.add(mntmListarcontatop);
+		
+		//-------------MENU-----------------------------------
 
 	}
 }

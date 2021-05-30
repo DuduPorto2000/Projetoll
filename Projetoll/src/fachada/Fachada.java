@@ -50,6 +50,8 @@ public class Fachada {
     	
     	if( repositorio.localizarCorrentista(cpf) != null )
 			throw new Exception("Conta já existente.");
+    	if( limite < 0 )
+    		throw new Exception("Limite não pode ser negativo.");
     	
     	Correntista correntista = new Correntista(cpf, nome, telefone, email);
     	repositorio.addCorrentistas(correntista);
@@ -100,6 +102,10 @@ public class Fachada {
     public static void apagarConta(String cpf) throws Exception {
     	
     	Correntista correntista = repositorio.localizarCorrentista(cpf);
+    	
+    	if(correntista == null)
+    		throw new Exception("Conta inexistente.");
+    	
     	Conta conta = correntista.getConta();
     	
     	if(conta.getSaldo() > 0)
@@ -126,10 +132,11 @@ public class Fachada {
     
     public static Conta obterContaTop() {
     	Conta contaTop = null;
-    	int top = -1;
+    	int top = 0;
+    	    	
     	for( Conta conta : listarContas() ) {
     		int lenLancamento = conta.getLancamentos().toArray().length;
-    		if( lenLancamento > top ) {
+    		if( lenLancamento >= top ) {
     			top = lenLancamento;
     			contaTop = conta;
     		}
@@ -156,6 +163,8 @@ public class Fachada {
     		throw new Exception("Conta de origem inexistente.");
     	if( origem.getConta() == destino )
     		throw new Exception("Conta destino igual a conta origem.");
+    	if( quantia < 0 )
+    		throw new Exception("Valor não pode ser negativo.");
     	
     	Conta contaOrigem = origem.getConta();
     	repositorio.addLancamentos( contaOrigem.criarLancamento(quantia) );
