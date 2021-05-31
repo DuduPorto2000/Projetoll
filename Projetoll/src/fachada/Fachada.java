@@ -167,7 +167,8 @@ public class Fachada {
     		throw new Exception("Valor não pode ser negativo.");
     	
     	Conta contaOrigem = origem.getConta();
-    	repositorio.addLancamentos( contaOrigem.criarLancamento(quantia) );
+    	repositorio.addLancamentos( contaOrigem.criarLancamento( destino.getNumero(),-quantia ) );
+    	repositorio.addLancamentos( destino.criarLancamento( contaOrigem.getNumero(),quantia ) );
     	contaOrigem.debitar(quantia);
     	destino.creditar(quantia);
     }

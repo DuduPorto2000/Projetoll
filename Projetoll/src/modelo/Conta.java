@@ -43,8 +43,8 @@ public class Conta {
 				+ tipochavePiks + ", correntistaCPF=" + correntista.getCpf() + "]";
 	}
 
-	public Lancamento criarLancamento(double valor) {
-		Lancamento lancamento = new Lancamento(getNumero(), valor);
+	public Lancamento criarLancamento(String numero, double valor) {
+		Lancamento lancamento = new Lancamento(numero, valor);
 		getLancamentos().add(lancamento);
 		
 		return lancamento;
