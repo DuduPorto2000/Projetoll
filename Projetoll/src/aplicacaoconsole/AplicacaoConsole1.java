@@ -36,6 +36,9 @@ public class AplicacaoConsole1 {
 			System.out.println("\n---------listagem geral de correntistas");
 			for(Correntista cor : Fachada.listarCorrentistas()) 
 				System.out.println(cor);
+			System.out.println("\n---------listagem geral de lançamentos");
+			for(Lancamento lan : Fachada.listarLancamentos()) 
+				System.out.println(lan);
 
 			//obter a chave aleatorio da conta de paulo
 			String chavealeatorio = Fachada.obterConta("111.111.004").getChavePIKS();
@@ -45,17 +48,14 @@ public class AplicacaoConsole1 {
 			Fachada.transferir("111.111.002", "ana@ifpb", 500);	//maria para ana
 			Fachada.transferir("111.111.003", "111.111.001", 600);	//ana para joao
 			Fachada.transferir("111.111.003", chavealeatorio, 100);	//ana para paulo
-			
-			System.out.println("\n---------listagem geral de lançamentos");
-			for(Lancamento lan : Fachada.listarLancamentos()) 
-				System.out.println(lan);
 
 			Conta contatop = Fachada.obterContaTop();
 			System.out.println("\nconta top="+contatop);
 			
 			
 			//excluir a conta de joao 
-//			Fachada.apagarConta("111.111.001");		
+			Fachada.transferir("111.111.001", "9999002",  900);	//joao para maria
+			Fachada.apagarConta("111.111.001");		
 
 			//criar  uma  chave aleatorio para conta de maria
 			Fachada.criarChave("111.111.002","aleatorio");
